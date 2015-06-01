@@ -16,6 +16,16 @@
         </script>
     
     </head>
+    const progressInstance = (
+  <div>
+    <ProgressBar striped bsStyle='success' now={40} />
+    <ProgressBar striped bsStyle='info' now={20} />
+    <ProgressBar striped bsStyle='warning' now={60} />
+    <ProgressBar striped bsStyle='danger' now={80} />
+  </div>
+);
+
+React.render(progressInstance, mountNode);
     <body>
         <div class="container">
 	    	<div class="row">
@@ -31,24 +41,16 @@
                       <li><a href="#development">Development</a></li>
                     </ul>
                 </div>
-                
-          const thumbnailInstance = (
-<Grid>
-  <Row>
-  <Col xs={6} md={3}>
-    <Thumbnail href='#' alt='171x180' src='/assets/thumbnail.png' />
-  </Col>
-  <Col xs={6} md={3}>
-    <Thumbnail href='#' alt='171x180' src='/assets/thumbnail.png' />
-  </Col>
-  <Col xs={6} md={3}>
-    <Thumbnail href='#' alt='171x180' src='/assets/thumbnail.png' />
-  </Col>
-  </Row>
-</Grid>
-);
+           const progressInstance = (
+              <div>
+                <ProgressBar striped bsStyle='success' now={40} />
+                <ProgressBar striped bsStyle='info' now={20} />
+                <ProgressBar striped bsStyle='warning' now={60} />
+                <ProgressBar striped bsStyle='danger' now={80} />
+              </div>
+            );
 
-React.render(thumbnailInstance, mountNode);
+React.render(progressInstance, mountNode);
     
         <!-- Google Fonts Script -->
         	<script type="text/javascript">
