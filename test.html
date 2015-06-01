@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/<react-version>/react.js"></script>
-		<script src="path/to/react-bootstrap-bower/react-bootstrap.min.js"></script>
+		<script src="js/react-bootstrap.min.js"></script>
         <script>
           var Alert = ReactBootstrap.Alert;
         </script>
@@ -31,20 +31,25 @@
                       <li><a href="#development">Development</a></li>
                     </ul>
                 </div>
-          
+                
+          const thumbnailInstance = (
+<Grid>
+  <Row>
+  <Col xs={6} md={3}>
+    <Thumbnail href='#' alt='171x180' src='/assets/thumbnail.png' />
+  </Col>
+  <Col xs={6} md={3}>
+    <Thumbnail href='#' alt='171x180' src='/assets/thumbnail.png' />
+  </Col>
+  <Col xs={6} md={3}>
+    <Thumbnail href='#' alt='171x180' src='/assets/thumbnail.png' />
+  </Col>
+  </Row>
+</Grid>
+);
+
+React.render(thumbnailInstance, mountNode);
     
-   <div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>
         <!-- Google Fonts Script -->
         	<script type="text/javascript">
         	  WebFontConfig = {
