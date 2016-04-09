@@ -9,11 +9,6 @@ body {
   background-repeat: repeat;
   background-position: center;
 }
-div#div1{
-    position:absolute;
-	float: 50%;
-
-}
 .container {
   -moz-perspective: 100px;
   -webkit-perspective: 100px;
@@ -136,6 +131,16 @@ div#div1{
   left: 10px;
   top: 45px;
   color: #ccc;
+}
+.adsl{
+	position:absolute;
+	left: 10px;
+	top: 85px;
+}
+.adsr{
+	position:absolute;
+	right: 10px;
+	top: 85px;
 }
 
 a {
