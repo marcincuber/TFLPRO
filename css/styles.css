@@ -9,6 +9,18 @@ body {
   background-repeat: repeat;
   background-position: center;
 }
+#wrapper{
+    background:red;
+    overflow:auto;
+}
+
+#c1{
+   float:left;
+}
+
+#c2{
+    float:right;
+}​
 
 .container {
   -moz-perspective: 100px;
