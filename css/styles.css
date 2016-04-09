@@ -10,9 +10,8 @@ body {
   background-position: center;
 }
 div#div1{
-    background:yellow;
     position:absolute;
-	float: right;
+	float: 50%;
 
 }
 .container {
