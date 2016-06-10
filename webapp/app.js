@@ -1,30 +1,23 @@
-angular.module('flapperNews', [])
-.factory('posts', [function(){
- 	var o = {
-    	posts: ["Milk", "Bread", "Cheese"]
-  	};
-  	return o;}])
-	
+angular.module('webLinks', [])
 .controller('MainCtrl', [
 '$scope',
-'posts',
-function($scope, posts){
- 	$scope.posts = posts.posts;
-	
-	$scope.addPost = function(){
- 		if(!$scope.title || $scope.title === '') { return; }
-  		$scope.posts.push({
-    		title: $scope.title,
-    		link: $scope.link,
-    		upvotes: 0
-  		});
-  		$scope.title = '';
-  		$scope.link = '';
-	};
-	
-	$scope.removeItem = function (x) {
-        $scope.products.splice(x, 1);
+function($scope){
+	$scope.links = ["www.google.com", "www.o2.co.uk", "www.three.co.uk"];
+    
+	$scope.addLink = function () {
+        $scope.errortext = "";
+        if (!$scope.addMe) {return;}
+        if ($scope.links.indexOf($scope.addMe) == -1) {
+            $scope.links.push($scope.addMe);
+        } else {
+            $scope.errortext = "Link already in the list";
+        }
     }
+    $scope.removeItem = function (x) {
+        $scope.errortext = "";    
+        $scope.links.splice(x, 1);
+    }
+
 	
 	
 }]);
