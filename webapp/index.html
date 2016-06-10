@@ -14,10 +14,10 @@
         	<style="margin-top:20px;">
             <h3>Add a new link</h3>
             <div class="form-group">
-         		<input type="text"
+         		<input type="url" pattern="https?://.+.+" required 
           		class="form-control"
           		placeholder="Link"
-          		ng-model="addMe"></input>
+          		ng-model="addMe"</input>
         	</div>
   			<button type="submit" class="btn btn-primary">ADD</button>
   		</form>
