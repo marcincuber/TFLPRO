@@ -1,9 +1,15 @@
 angular.module('flapperNews', [])
+.factory('posts', [function(){
+ 	var o = {
+    	posts: []
+  	};
+  	return o;}])
+	
 .controller('MainCtrl', [
 '$scope',
-function($scope){
- 	$scope.posts = [
-	];
+'posts',
+function($scope, posts){
+ 	$scope.posts = posts.posts;
 	
 	$scope.addPost = function(){
  		if(!$scope.title || $scope.title === '') { return; }
