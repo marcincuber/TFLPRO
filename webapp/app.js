@@ -1,7 +1,7 @@
 angular.module('flapperNews', [])
 .factory('posts', [function(){
  	var o = {
-    	posts: []
+    	posts: ["Milk", "Bread", "Cheese"]
   	};
   	return o;}])
 	
@@ -21,6 +21,11 @@ function($scope, posts){
   		$scope.title = '';
   		$scope.link = '';
 	};
+	
+	$scope.removeItem = function (x) {
+        $scope.products.splice(x, 1);
+    }
+	
 	
 }]);
 
