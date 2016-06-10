@@ -8,7 +8,9 @@
   </head>
   
   <body ng-app="webLinks" ng-controller="MainCtrl">
-  	<form ng-submit="addLink()">
+  	<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+		 <form ng-submit="addLink()">
         	<style="margin-top:20px;">
             <h3>Add a new link</h3>
             <div class="form-group">
@@ -19,9 +21,8 @@
         	</div>
   			<button type="submit" class="btn btn-primary">ADD</button>
   		</form>
-  	<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-
+      	<p>{{errortext}}</p> 
+        
       <div class="page-header">
         <h1>List of URLs</h1>
       </div>
@@ -31,12 +32,11 @@
   			<a ng-show="link" href="{{link}}">
     			{{link}}
   			</a>
+            
+            <span ng-click="removeItem($index)"> X </span>
 		</div>
     </div>
     </div>
-  	
-  	
-    
   </body>
 </html>
 
