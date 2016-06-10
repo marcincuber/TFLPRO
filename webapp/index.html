@@ -14,9 +14,9 @@
         	<style="margin-top:20px;">
             <h3>Add a new link</h3>
             <div class="form-group">
-         		<input type="url" pattern="https?://.+.+" required 
+         		<input type="url" pattern="https?://.+" required 
           		class="form-control"
-          		placeholder="Link"
+          		placeholder="http"
           		ng-model="addMe"</input>
         	</div>
   			<button type="submit" class="btn btn-primary">ADD</button>
@@ -27,13 +27,17 @@
         <h1>List of URLs</h1>
       </div>
     	<div ng-repeat="link in links">
-  			<span ng-click="removeItem($index)">X</span>
         	<span style="font-size:20px; margin-left:10px;">
-  			<a ng-show="link" href="{{link}}">
-    			{{link}}
-  			</a>
-            
-            <span ng-click="removeItem($index)"> X </span>
+            <span editable-text="user.name" e-form="textBtnForm">
+    			<a ng-show="link" href="{{link}}">
+    				{{link}}
+  				</a></span>
+            <button class="btn btn-default" ng-click="MainCtrl.$show()" ng-hide="MainCtrl.$visible">
+    			edit
+  			</button>
+  			
+            <span ng-click="removeItem($index)">Delete</span>
+            <!--<span ng-click="editItem($index)"> Edit </span> -->
 		</div>
     </div>
     </div>
