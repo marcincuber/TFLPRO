@@ -14,12 +14,16 @@ function($scope){
             $scope.errortext = "Link already in the list";
         }
     }
+	
     $scope.removeItem = function (x) {
-        $scope.errortext = "";    
+        $scope.errortext = x + " deleted";    
         $scope.links.splice(x, 1);
     }
-
 	
+	$scope.getResult = function($index, sinitem) {
+    	$scope.indexResult = $scope.links[$index];
+    	$scope.itemResult = sinitem;
+  };
 	
 }]);
 
