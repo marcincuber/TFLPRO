@@ -1,27 +1,43 @@
-<!DOCTYPE html>
-<html ng-app="app">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angular-xeditable Starter Template</title>
-    <!-- Bootstrap 3 css -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Angular.js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <!-- Angular-xeditable -->
-    <link href="angular-xeditable/css/xeditable.css" rel="stylesheet">
-    <script src="angular-xeditable/js/xeditable.js"></script>
-    <!-- app.js -->
+    <title>App</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="app.js"></script>
+  	<style> .glyphicon-thumbs-up { cursor:pointer } </style>
   </head>
-  <body style="padding: 20px">
-    <h1 style="margin-bottom: 20px">Angular-xeditable Starter Template</h1>
-    <div ng-controller="Ctrl">
-      <!-- editable element -->
-      <a href="#" editable-text="user.name">{{ user.name || "empty" }}</a>
-      <div id="debug" style="margin-top: 30px">
-      {{ user | json }}
+  
+  <body ng-app="webLinks" ng-controller="MainCtrl">
+  	<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+		 <form ng-submit="addLink()">
+        	<style="margin-top:20px;">
+            <h3>Add a new link</h3>
+            <div class="form-group">
+         		<input type="url" pattern="https?://.+" required 
+          		class="form-control"
+          		placeholder="http"
+          		ng-model="addMe"</input>
+        	</div>
+  			<button type="submit" class="btn btn-primary">ADD</button>
+  		</form>
+      	<p>{{errortext}}</p> 
+        
+      <div class="page-header">
+        <h1>List of URLs</h1>
       </div>
+    	<div ng-repeat="link in links">
+        	<span style="font-size:20px; margin-left:10px;">
+            <a href="link" editable-text="link">{{ link || 'empty' }}</a>
+            <span editable-text="link" e-form="textBtnForm">
+    			
+            <span ng-click="removeItem($index)">Delete</span>
+            <!--<span ng-click="editItem($index)"> Edit </span> -->
+		</div>
+    </div>
     </div>
   </body>
-</html>  
+</html>
+
