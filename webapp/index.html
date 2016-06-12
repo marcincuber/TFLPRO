@@ -15,42 +15,40 @@
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		
-    <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+    	<style> .glyphicon-thumbs-up { cursor:pointer } </style>
 	</head>
 
 	<body>
-		<div ng-controller="MainCtrl">
-			<div class="row">
-    			<div class="col-md-6 col-md-offset-3">
-                	<form ng-submit="addLink()">
-        				<style="margin-top:20px;">
-            			<h3>Add a new link</h3>
-            			<div class="form-group">
-         					<input type="url" pattern="https?://.+" 
-          					class="form-control"
-          					placeholder="http"
-          					ng-model="newItem"</input>
-        				</div>
-  						<button type="submit" class="btn btn-primary">ADD</button>
-  					</form>
-      				<p>{{errortext}}</p>
-			<label>Search:</label> <input type="text" "ng-model="search" placeholder="Search" />
-				<br />
-                
-				<div class="page-header">
-        			<h1>List of URLs</h1>
-      			</div>
-				<div>
-                <span style="font-size:20px; margin-left:10px;">
-					<ul>
-						<li ng-repeat="item in items | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">{{item}} <button ng-click="removeItem(item)" > Remove </button> </li>
-					</ul>
+	  <div ng-controller="MainCtrl">
+		<div class="row">
+    	  <div class="col-md-6 col-md-offset-3">
 
-				<pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination>
-                </div>
-				</div>
-        	</div>
+            <form ng-submit="addLink()" style="margin-top:20px;">
+              <h3>Add a new link</h3>
+              <div class="form-group">
+         		<input type="url" pattern="https?://.+" 
+          		class="form-control"
+          		placeholder="http"
+          		ng-model="newItem"/>
+        	  </div>
+              <button type="submit" class="btn btn-primary"> ADD </button>
+            </form>
+            
+            <p>{{errortext}}</p>
+            
+            <label>Search:</label> <input type="text" ng-model="search" />
+            
+            <div class="page-header">
+              <h1>List of URLs</h1>
+            </div>
+				 
+			  <li ng-repeat="item in items | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">{{item}} <button ng-click="removeItem(item)" > Remove </button> </li>
+			</ul>
+
+			<pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination> 
+          </div>
         </div>
 	</body>
 </html>
