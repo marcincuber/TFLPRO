@@ -2,9 +2,8 @@
 <html lang="en" ng-app="App">
 	<head>
 		<meta charset="utf-8">
-		<title>Web links with pagination</title>
+		<title>Submit Web links </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
 
 		<!-- JS Libraries -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js" type="text/javascript"></script>
@@ -13,12 +12,15 @@
 
 		<!-- Angular Scripts -->
 		<script src="script.js" type="text/javascript"></script>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="main.css">
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        
 		
-    	<style> .glyphicon-thumbs-up { cursor:pointer } </style>
+    	<style> .glyphicon-thumbs-up {cursor:pointer} </style>
 	</head>
 
 	<body>
@@ -39,8 +41,8 @@
             
             <p>{{errortext}}</p>
             
-            <input type="button" value="Write Cookie" ng-click="WriteCookie()" />
-        	<input type="button" value="Read Cookie" ng-click="ReadCookie()" />
+            <!--<input type="button" value="Write Cookie" ng-click="WriteCookie()" />
+        	<input type="button" value="Read Cookie" ng-click="ReadCookie()" /> -->
             
             <form ng-submit="addLink()" style="margin-top:20px;">
               <h3>Search</h3>
