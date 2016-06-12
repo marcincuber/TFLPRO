@@ -1,46 +1,56 @@
-<html>
-  <head>
-    <title>App</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-    <script src="app.js"></script>
-  	<style> .glyphicon-thumbs-up { cursor:pointer } </style>
-  </head>
-  
-  <body ng-app="webLinks" ng-controller="MainCtrl">
-  	<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-		 <form ng-submit="addLink()">
-        	<style="margin-top:20px;">
-            <h3>Add a new link</h3>
-            <div class="form-group">
-         		<input type="url" pattern="https?://.+" 
-          		class="form-control"
-          		placeholder="http"
-          		ng-model="addMe"</input>
-        	</div>
-  			<button type="submit" class="btn btn-primary">ADD</button>
-  		</form>
-      	<p>{{errortext}}</p> 
-        
-      <div class="page-header">
-        <h1>List of URLs</h1>
-      </div>
-    	<div ng-repeat="link in links">
-        	<span style="font-size:20px; margin-left:10px;">
-            <a href="link" editable-text="link">{{ link || 'empty' }}</a>	
-            <span ng-click="removeItem($index)">Delete</span>
-            <span ng-click="editItem($index)"> Edit </span>
-            <span ng-click="getResult($index, item)">test</span>
-		</div>
-        <h2>Results</h2>
-      	<p><code>$index:</code> {{indexResult.name}}</p>
-      	<p><code>item:</code> {{itemResult.name}}</p>
-    </div>
-      
-    </div>
-  </body>
-</html>
+<!DOCTYPE HTML>
+<html lang="en" ng-app="App">
+	<head>
+		<meta charset="utf-8">
+		<title>Web links with pagination</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
 
+		<!-- JS Libraries -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js" type="text/javascript"></script>
+		<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js" type="text/javascript"></script>
+
+		<!-- Angular Scripts -->
+		<script src="script.js" type="text/javascript"></script>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+		
+    <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+	</head>
+
+	<body>
+		<div ng-controller="MainCtrl">
+			<div class="row">
+    			<div class="col-md-6 col-md-offset-3">
+                	<form ng-submit="addLink()">
+        				<style="margin-top:20px;">
+            			<h3>Add a new link</h3>
+            			<div class="form-group">
+         					<input type="url" pattern="https?://.+" 
+          					class="form-control"
+          					placeholder="http"
+          					ng-model="newItem"</input>
+        				</div>
+  						<button type="submit" class="btn btn-primary">ADD</button>
+  					</form>
+      				<p>{{errortext}}</p>
+			<label>Search:</label> <input type="text" "ng-model="search" placeholder="Search" />
+				<br />
+                
+				<div class="page-header">
+        			<h1>List of URLs</h1>
+      			</div>
+				<div>
+                <span style="font-size:20px; margin-left:10px;">
+					<ul>
+						<li ng-repeat="item in items | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">{{item}} <button ng-click="removeItem(item)" > Remove </button> </li>
+					</ul>
+
+				<pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination>
+                </div>
+				</div>
+        	</div>
+        </div>
+	</body>
+</html>
