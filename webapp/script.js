@@ -1,4 +1,18 @@
-var app = angular.module('App', ['ui.bootstrap']);
+var app = angular.module('App', ['ui.bootstrap', 'ngCookies']);
+
+app.factory('ItemsService', ['$cookies', function($cookies) {
+    var cookieName = 'items'
+    return {
+      get: function(defaults) {
+        return $cookies.get(cookieName).split(',') || defaults
+      },
+      put: function(items) {
+        var expireDate = new Date()
+        expireDate.setDate(expireDate.getDate() + 1);
+        $cookies.put(cookieName, items.join(','), { expires: expireDate } )
+      }
+    }
+}]);
 
 app.filter('startFrom', function () {
 	return function (input, start) {
@@ -10,37 +24,15 @@ app.filter('startFrom', function () {
 	};
 });
 
-app.factory('ItemsService', ['$window', function($window) {
-     var storageKey = 'items',
-        _sessionStorage = $window.sessionStorage;
-
-     return {
-        // Returns stored items array if available or return undefined
-        getItems: function() {
-            var itemsStr = _sessionStorage.getItem(storageKey);
-
-            if(itemsStr) {
-                return angular.fromJson(itemsStr);
-            }                      
-        },
-        // Adds the given item to the stored array and persists the array to sessionStorage
-        putItem: function(item) {
-            var itemsStr = _sessionStorage.getItem(storageKey),
-            items = [];
-
-            if(itemStr) {
-                items = angular.fromJson(itemsStr);
-            }
-
-            items.push(item);
-
-            _sessionStorage.setItem(storageKey, angular.toJson(items));
-        }
-     }
-}]);
-
 app.controller('MainCtrl', ['$scope', 'filterFilter', 'ItemsService', function ($scope, filterFilter, ItemsService) {
-	$scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"];
+	var itemscookie = ItemsService.get($scope.items);
+	if (itemscookie.length == 0) {
+		$scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"];
+	}
+	else {
+	$scope.items = ItemsService.get($scope.items);
+	};
+	<!--$scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"];
 	
 	$scope.addLink = function () {
         $scope.errortext = "";
