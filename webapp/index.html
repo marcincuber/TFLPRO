@@ -37,9 +37,15 @@
             </form>
             
             <p>{{errortext}}</p>
-            
-            <label>Search:</label> <input type="text" ng-model="search" />
-            
+            <form ng-submit="addLink()" style="margin-top:20px;">
+              <h3>Search</h3>
+              <div class="form-group">
+         		<input type="text"
+          		class="form-control"
+          		ng-model="search"/>
+              </div>
+            </form>
+         
             <div class="page-header">
               <h1>List of URLs</h1>
             </div>
