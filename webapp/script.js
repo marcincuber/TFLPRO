@@ -21,10 +21,7 @@ app.factory('ItemsService', ['$window', function($window) {
 
             if(itemsStr) {
                 return angular.fromJson(itemsStr);
-            }
-			else {
-				return ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"
-	]}                      
+            }                      
         },
         // Adds the given item to the stored array and persists the array to sessionStorage
         putItem: function(item) {
@@ -43,8 +40,8 @@ app.factory('ItemsService', ['$window', function($window) {
 }]);
 
 app.controller('MainCtrl', ['$scope', 'filterFilter', 'ItemsService', function ($scope, filterFilter, ItemsService) {
-	$scope.items = ItemsService.get($scope.items);
-	
+	$scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"
+	];
 	
 	$scope.addLink = function () {
         $scope.errortext = "";
