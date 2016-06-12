@@ -1,18 +1,36 @@
 var app = angular.module('App', ['ui.bootstrap', 'ngCookies']);
 
-app.factory('ItemsService', ['$cookies', function($cookies) {
-    var cookieName = 'items'
-    return {
-      get: function(defaults) {
-        return $cookies.get(cookieName).split(',') || defaults
-      },
-      put: function(items) {
-        var expireDate = new Date()
-        expireDate.setDate(expireDate.getDate() + 1);
-        $cookies.put(cookieName, items.join(','), { expires: expireDate } )
-      }
-    }
+app.factory('ItemsService', ['$window', function($window) {
+     var storageKey = 'items',
+        _sessionStorage = $window.sessionStorage;
+
+     return {
+        // Returns stored items array if available or return undefined
+        getItems: function() {
+            var itemsStr = _sessionStorage.getItem(storageKey);
+
+            if(itemsStr) {
+                return angular.fromJson(itemsStr);
+            }         
+
+            return ['name1', 'name2', 'name3']; // return default value when there is nothing stored in sessionStore                
+        },
+        // Adds the given item to the stored array and persists the array to sessionStorage
+        putItem: function(item) {
+            var itemsStr = _sessionStorage.getItem(storageKey),
+            items = [];
+
+            if(itemStr) {
+                items = angular.fromJson(itemsStr);
+            }
+
+            items.push(item);
+
+            _sessionStorage.setItem(storageKey, angular.toJson(items));
+        }
+     }
 }]);
+
 
 app.filter('startFrom', function () {
 	return function (input, start) {
@@ -24,23 +42,27 @@ app.filter('startFrom', function () {
 	};
 });
 
-app.controller('MainCtrl', ['$scope', 'filterFilter', 'ItemsService', function ($scope, filterFilter, ItemsService) {
-	var itemscookie = ItemsService.get($scope.items);
-	if (itemscookie.length == 0) {
-		$scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"];
-	}
-	else {
-	$scope.items = ItemsService.get($scope.items);
-	};
-	<!--$scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"];
+app.controller('MainCtrl', ['$scope', 'filterFilter', function ($scope, filterFilter, ItemsService) {
+	
+	//$scope.items = ['name1', 'name2', 'name3'];
+	$scope.items = ItemsService.getItems();
+	
+	$scope.WriteCookie = function () {
+        ItemsService.putItem($scope.items);
+    };
+	$scope.ReadCookie = function () {
+    	$window.alert(ItemsService.getItems($scope.items));
+    };
+	
+	<!-- $scope.items = ["name 1", "name 2", "name 3", "name 4", "name 5", "name 6", "name 7", "name 8", "name 10", "custom", "custom 2"]; 
 	
 	$scope.addLink = function () {
         $scope.errortext = "";
         if (!$scope.newItem) {return;}
         if ($scope.items.indexOf($scope.newItem) == -1) {
             $scope.items.push($scope.newItem);
+			ItemsService.put($scope.items);
 			$scope.errortext = "Thank you for your submition";
-			ItemsService.put($scope.items)
         } else {
             $scope.errortext = "Link already in the list";
         }
@@ -48,8 +70,8 @@ app.controller('MainCtrl', ['$scope', 'filterFilter', 'ItemsService', function (
 	
 	$scope.removeItem = function(item) {
     	$scope.items.splice($scope.items.indexOf(item), 1);
-		ItemsService.put($scope.items)
 		$scope.resetFilters;
+		$cookies.put('allItems', $scope.items)
   	};
 	
 	$scope.getResult = function($index, x) {

@@ -38,6 +38,10 @@
             </form>
             
             <p>{{errortext}}</p>
+            
+            <input type="button" value="Write Cookie" ng-click="WriteCookie()" />
+        	<input type="button" value="Read Cookie" ng-click="ReadCookie()" />
+            
             <form ng-submit="addLink()" style="margin-top:20px;">
               <h3>Search</h3>
               <div class="form-group">
