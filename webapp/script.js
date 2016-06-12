@@ -50,7 +50,7 @@ app.controller('MainCtrl', ['$scope', 'filterFilter', 'ItemsService', function (
         if ($scope.items.indexOf($scope.newItem) == -1) {
             $scope.items.push($scope.newItem);
 			$scope.errortext = "Thank you for your submittion";
-			$scope.items = ItemsService.put($scope.items)
+			ItemsService.put($scope.items)
         } else {
             $scope.errortext = "Link already in the list";
         }
@@ -58,7 +58,7 @@ app.controller('MainCtrl', ['$scope', 'filterFilter', 'ItemsService', function (
 	
 	$scope.removeItem = function(item) {
     	$scope.items.splice($scope.items.indexOf(item), 1);
-		$scope.items = ItemsService.put($scope.items)
+		ItemsService.put($scope.items)
 		$scope.resetFilters;
   	};
 	
