@@ -57,7 +57,7 @@
               <h1>List of URLs</h1>
             </div>
 			<ul>
-			  <li ng-repeat="item in items | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">{{item}} <button ng-click="removeItem(item)" > Remove </button> </li>
+			  <li ng-repeat="item in items | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"><input type="text" ng-model="item"></input> <button ng-click="removeItem(item)" > Remove </button>  </li>
 			</ul>
 
 			<pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination> 

@@ -4,13 +4,13 @@ app.factory('ItemsService', ['$window', function($window) {
      var storageKey = 'items',
         _sessionStorage = $window.sessionStorage;
      return {
-        // Returns stored items array if available or return undefined
+        // Returns stored items array if available or return default array
         getItems: function() {
             var itemsStr = _sessionStorage.getItem(storageKey);
             if(itemsStr) {
                 return angular.fromJson(itemsStr);
             }         
-            return ['name1', 'name2', 'name3']; // return default value when there is nothing stored in sessionStore                
+            return ["http://o2.com", "http://o2.co.uk", "http://three.co.uk"]; // return default value when there is nothing stored in sessionStore                
         },
         // Adds the given item to the stored array and persists the array to sessionStorage
         putItem: function(item) {
@@ -69,6 +69,12 @@ app.controller('MainCtrl', ['$scope', 'filterFilter', function ($scope, filterFi
 		$scope.resetFilters();
 		$cookies.put('allItems', $scope.items)
   	};
+	
+	$scope.$watch(function() { return angular.toJson([$scope.items]); },
+                function() {
+					console.log('settings updated!'); 
+				  	$scope.items = $scope.items;
+                });
 	
 	// get the value at the given index
 	$scope.getResult = function($index, x) {
