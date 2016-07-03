@@ -34,7 +34,7 @@ body {
   width: 650px;
   color:#FFF;
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   font-style: italic;
   letter-spacing: 0.5em;
@@ -112,7 +112,7 @@ body {
 }
 
 .title {
-  font-weight: 100;
+  font-weight: 80;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -124,7 +124,7 @@ body {
 }
 
 .subtitle {
-  font-weight: 100;
+  font-weight: 80;
   margin: 0;
   padding: 0;
   position: absolute;
