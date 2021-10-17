@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .fh5co-nav #fh5co-logo {
-  font-size: 60px;
+  font-size: 55px;
   margin: 0;
   padding: 0;
   line-height: 40px;
@@ -1834,6 +1834,11 @@ form label {
   height: 100%;
   z-index: 9999;
   background: url(../images/loader.gif) center no-repeat #fff;
+}
+
+.column {
+  float: left;
+  width: 50%;
 }
 
 .js .animate-box {
