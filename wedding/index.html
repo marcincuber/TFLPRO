@@ -301,10 +301,11 @@
 
     // default example
     simplyCountdown('.simply-countdown-one', {
-    	year: 2022,
-      month: 3 + 1,
+      year: 2022,
+      month: 4,
       day: 22,
-      hours: 15
+      hours: 14,
+      enableUtc: false
     });
 
     //jQuery example
@@ -312,7 +313,7 @@
         year: d.getFullYear(),
         month: d.getMonth() + 1,
         day: d.getDate(),
-        enableUtc: true
+        enableUtc: false
     });
 </script>
 
