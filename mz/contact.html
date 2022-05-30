@@ -30,6 +30,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -145,12 +147,15 @@
                                         <label for="message">Wiadomosc</label>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-md-6">
+                                    <div class="g-recaptcha" data-sitekey="6LfgXy0gAAAAACMU9rPrbwQKZNE9elofrltvyu0H"></div> 
+                                </div>
+                                <div class="col-md-6">
                                     <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Wyslij Wiadomosc</button>
                                 </div>
                             </div>
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="_next" value="https://google.com" />
+                            <!-- <input type="hidden" name="_next" value="https://google.com" /> -->
                         </form>
                     </div>
                 </div>
