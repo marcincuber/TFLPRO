@@ -155,7 +155,7 @@
                                 </div>
                             </div>
                             <input type="text" name="_gotcha" style="display:none">
-                            <!-- <input type="hidden" name="_next" value="https://google.com" /> -->
+                            <input type="hidden" name="_next" value="https://marcincuber.github.io/mz"/>
                         </form>
                     </div>
                 </div>
@@ -228,13 +228,14 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+    <!-- recaptcha validation https://help.formspree.io/hc/en-us/articles/360022811154-Adding-a-custom-reCAPTCHA-v2-key -->
     <script>
-    window.onload = function() { 
-      var el = document.getElementById('g-recaptcha-response'); 
-      if (el) { 
-        el.setAttribute('required', 'required'); 
-      } 
-    }
+        window.onload = function() { 
+          var el = document.getElementById('g-recaptcha-response'); 
+          if (el) { 
+            el.setAttribute('required', 'required'); 
+          } 
+        }
     </script>
 
     <!-- JavaScript Libraries -->
